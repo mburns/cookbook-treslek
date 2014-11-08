@@ -2,7 +2,7 @@
 # Cookbook Name:: treslek
 # Recipe:: default
 #
-# Copyright 2014, Rackspace
+# Copyright 2014, Michael Burns
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,13 +37,7 @@ end
 
 execute "npm-install-treslek" do
   cwd node[:treslek][:path]
-  command "npm install"
-  action :nothing
-end
-
-execute "build-treslek" do
-  cwd node[:treslek][:path]
-  command "make build"
+  command "npm install --production"
   action :nothing
 end
 
@@ -51,17 +45,30 @@ git node[:treslek][:path] do
   repository node[:treslek][:repo]
   action :sync
   notifies :run, "execute[npm-install-treslek]"
-  notifies :run, "execute[build-treslek]"
+end
+
+remote_directory "${node[:treslek][:path]}/comics" do
+  uid node[:treslek][:uid]
+  gid node[:treslek][:gid]
+  overwrite false #merge with git repo's comics dir contents
+ end
+
+direcotry "/etc/treslek" do
+  uid node[:treslek][:uid]
+  gid node[:treslek][:gid]
+  recursive true
 end
 
 template "/etc/treslek/config.js" do
   uid node[:treslek][:uid]
   gid node[:treslek][:gid]
+  mode 00644
   variables ({
     :redis_port => '6379',
     :redis_host => '127.0.0.1',
     :redis_prefix => 'treslek'
   })
+  notifies :restart, "service[treslek]"
 end
 
 runit_service "treslek" do

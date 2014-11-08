@@ -1,5 +1,5 @@
 name             'treslek'
-maintainer       'Rackspace'
+maintainer       'Michael Burns'
 maintainer_email 'michael.burns@rackspace.com'
 license          'Apache 2.0'
 description      'Installs/Configures treslek'
