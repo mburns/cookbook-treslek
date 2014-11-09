@@ -1,5 +1,9 @@
-treslek Cookbook
+Treslek Cookbook
 ================
+
+[![Gem Version](http://img.shields.io/gem/v/voxer-chef-formatter.svg)][gem]
+
+[gem]: https://rubygems.org/gems/voxer-chef-formatter
 
 IRC bot: https://github.com/jirwin/treslek
 
