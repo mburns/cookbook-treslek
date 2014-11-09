@@ -27,5 +27,5 @@ default.treslek.irc.floodprotection = true
 #topics
 default.treslek.topics.separator = '::'
 default.treslek.topics.prefixes = {
-  '#trelsek': 'Treslek'
+  '#trelsek' => 'Treslek'
 }
