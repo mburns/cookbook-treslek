@@ -1,9 +1,11 @@
 Treslek Cookbook
 ================
 
-[![Gem Version](http://img.shields.io/gem/v/voxer-chef-formatter.svg)][gem]
+[![Build Status](http://img.shields.io/travis/mburns/cookbook-treslek.svg)][travis]
+[![Supermarket](http://img.shields.io/cookbook/v/cookbook-treslek.svg)][supermarket]
 
-[gem]: https://rubygems.org/gems/voxer-chef-formatter
+[travis]: http://travis-ci.org/mburns/cookbook-treslek
+[supermarket]: https://supermarket.getchef.com/cookbooks/treslek
 
 IRC bot: https://github.com/jirwin/treslek
 
