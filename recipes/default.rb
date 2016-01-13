@@ -53,7 +53,7 @@ remote_directory "${node[:treslek][:path]}/comics" do
   overwrite false #merge with git repo's comics dir contents
  end
 
-direcotry "/etc/treslek" do
+directory "/etc/treslek" do
   uid node[:treslek][:uid]
   gid node[:treslek][:gid]
   recursive true
