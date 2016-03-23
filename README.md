@@ -41,4 +41,5 @@ e.g.
 
 License and Authors
 -------------------
+* Justin Gallardo <justin.gallardo@rackspace.com>
 * Michael Burns <michael.burns@rackspace.com>

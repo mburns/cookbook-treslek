@@ -1,0 +1,36 @@
+{
+  "nick": "<%= node['treslek']['nick'] %>",
+  "host": "<%= node['treslek']['host'] %>",
+  "ircOptions": {
+    "port": <%= node['treslek']['irc']['port'] %>,
+    "channels": <%= node['treslek']['irc']['channels'].to_json %>,
+    "userName": "<%= node['treslek']['irc']['username'] %>",
+    "realName": "<%= node['treslek']['irc']['realname'] %>",
+    "autoConnect": <%= node['treslek']['irc']['autoconnect'] %>,
+    "floodProtection": <%= node['treslek']['irc']['floodprotection'] %>,
+    "floodProtectionDelay": 100,
+    "sasl": <%= node['treslek']['irc']['sasl'] %>,
+    "password": "<%= node['treslek']['irc']['password'] %>",
+    "secure": <%= node['treslek']['irc']['secure'] %>
+  },
+  "ignored": <%= node['treslek']['ignored'].to_json %>,
+  "redis": {
+    "host": "<%= @redis_host %>",
+    "port": <%= @redis_port %>,
+    "prefix": "<%= @redis_prefix %>"
+  },
+  "webhook": {
+    "host": "<%= node['treslek']['webhooks']['host'] %>",
+    "port": <%= node['treslek']['webhooks']['port'] %>,
+    "channelKey": "<%= node['treslek']['webhooks']['channel'] %>"
+  },
+  "topics": {
+    "separator": "<%= node['treslek']['topics']['separator'] %>",
+    "prefixes": <%= node['treslek']['topics']['prefixes'].to_hash.to_json %>
+  },
+  "admins": <%= node['treslek']['admins'].to_json %>,
+  "plugins_dir": "<%= node['treslek']['path'] %>/plugins",
+  "enabledPlugins": <%= node['treslek']['enabledPlugins'].to_json %>,
+  "plugins": <%= node['treslek']['plugins'].to_json %>,
+  "commandPrefix": "<%= node['treslek']['commandPrefix'] %>"
+}

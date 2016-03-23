@@ -1,2 +1,2 @@
 #!/bin/bash
-exec chpst -u <%= node['redis']['user'] %> -c 4294967296 <%= node['treslek']['bin'] %> <%= node['treslek']['config'] %> 2>&1
+exec chpst -u <%= node['treslek']['user'] %> -c 4294967296 /usr/bin/node <%= node['treslek']['bin'] %> <%= node['treslek']['config'] %> 2>&1
