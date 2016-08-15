@@ -17,51 +17,81 @@
 # limitations under the License.
 #
 
-include_recipe "redis"
-include_recipe "runit"
+include_recipe 'redis'
+include_recipe 'nodejs'
+include_recipe 'runit'
 
 group "treslek" do
-  gid node[:treslek][:gid]
+  gid node['treslek']['gid']
   action :create
 end
 
-user "treslek" do
-  comment "Treslek IRC Bot"
-  uid node[:treslek][:uid]
-  gid node[:treslek][:gid]
-  home "/usr/sbin"
-  shell "/bin/false"
+user 'treslek' do
+  comment 'Treslek IRC Bot'
+  uid node['treslek']['uid']
+  gid node['treslek']['gid']
+  home '/usr/sbin'
+  shell '/bin/false'
   system true
   action :create
 end
 
-execute "npm-install-treslek" do
-  cwd node[:treslek][:path]
-  command "npm install --production"
-  action :nothing
+directory node['treslek']['path'] do
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
+  recursive true
 end
 
-git node[:treslek][:path] do
-  repository node[:treslek][:repo]
-  action :sync
-  notifies :run, "execute[npm-install-treslek]"
+directory '/etc/treslek' do
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
+  recursive true
 end
+
+nodejs_npm 'treslek' do
+  version node['treslek']['version']
+  user node['treslek']['uid']
+  notifies :restart, 'service[treslek]', :delayed
+end
+
+## Plugins
 
 remote_directory "${node[:treslek][:path]}/comics" do
   uid node[:treslek][:uid]
   gid node[:treslek][:gid]
   overwrite false #merge with git repo's comics dir contents
- end
+end
 
-directory "/etc/treslek" do
-  uid node[:treslek][:uid]
-  gid node[:treslek][:gid]
-  recursive true
+cookbook_file 'nagios.js' do
+  path "#{node['treslek']['path']}/plugins/nagios.js"
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
+  action :create
+end
+
+remote_directory 'treslek-gh-issue-search' do
+  path "#{node[:treslek][:path]}/plugins/treslek-gh-issue-search"
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
+  action :create
+end
+
+creds = Chef::EncryptedDataBagItem.load('passwords', 'github')
+
+template "#{node[:treslek][:path]}/plugins/treslek-gh-issue-search/config.json" do
+  source 'treslek-gh-issue-search.json.erb'
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
+  mode 0o0644
+  variables ({
+    :username => creds['username'],
+    :password => creds['password']
+  })
 end
 
 template "/etc/treslek/config.js" do
-  uid node[:treslek][:uid]
-  gid node[:treslek][:gid]
+  uid node['treslek']['uid']
+  gid node['treslek']['gid']
   mode 00644
   variables ({
     :redis_port => '6379',
@@ -76,3 +106,6 @@ runit_service "treslek" do
   log_group "treslek"
   down false
 end
+
+iptables_rule "ports_irccat"
+iptables_rule "ports_webhook"
