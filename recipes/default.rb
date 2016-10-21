@@ -59,7 +59,7 @@ end
 remote_directory "${node['treslek']['path']}/comics" do
   owner node['treslek']['uid']
   group node['treslek']['gid']
-  overwrite false #merge with git repo's comics dir contents
+  overwrite false # merge with git repo's comics dir contents
 end
 
 cookbook_file 'nagios.js' do
@@ -84,19 +84,19 @@ template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json
   group node['treslek']['gid']
   mode 0o0644
   variables ({
-    :username => creds['username'],
-    :password => creds['password']
+    username: creds['username'],
+    password: creds['password']
   })
 end
 
 template node['treslek']['config'] do
   owner node['treslek']['uid']
   group node['treslek']['gid']
-  mode 00644
+  mode 0o0644
   variables ({
-    :redis_port => '6379',
-    :redis_host => '127.0.0.1',
-    :redis_prefix => 'treslek'
+    redis_port: '6379',
+    redis_host: '127.0.0.1',
+    redis_prefix: 'treslek'
   })
   notifies :restart, 'service[treslek]'
 end

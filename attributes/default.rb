@@ -32,22 +32,22 @@ default['treslek']['irc']['sasl'] = false
 default['treslek']['irc']['secure'] = true
 default['treslek']['irc']['password'] = ''
 
-#topics
+# topics
 default['treslek']['topics']['separator'] = '::'
 default['treslek']['topics']['prefixes'] = {
   '#trelsek' => 'Treslek'
 }
 
-#webhooks
+# webhooks
 default['treslek']['webhooks']['host'] = '0.0.0.0'
 default['treslek']['webhooks']['port'] = 1304
 default['treslek']['webhooks']['channel'] = 'webhooks'
 
-#plugins
+# plugins
 default['treslek']['enabledPlugins'] = %w(s help topic about nagios karma reminder treslek-memo slogan sys isup treslek-vote treslek-spotify treslek-random seen treslek-url)
 default['treslek']['plugins'] = %w(treslek-memo treslek-vote treslek-spotify treslek-random treslek-url)
 default['treslek']['commandPrefix'] = '!'
 
-#runit config
+# runit config
 default['treslek']['keep_logs'] = 20
 default['treslek']['syslog_sink'] = '127.0.0.1:8001'
