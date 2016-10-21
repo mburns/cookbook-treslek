@@ -7,7 +7,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.require_version ">= 1.5.0"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.hostname = "chef-treslek-berkshelf"
+  config.vm.hostname = "treslek-berkshelf"
 
   # Set the version of chef to install using the vagrant-omnibus plugin
   config.omnibus.chef_version = :latest
@@ -43,12 +43,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       treslek: {
-	foo: 'bar'
+        foo: 'bar'
       }
     }
 
     chef.run_list = [
-        "recipe[chef-treslek::default]"
+        "recipe[treslek::default]"
     ]
   end
 end
