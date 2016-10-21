@@ -89,7 +89,7 @@ template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json
   })
 end
 
-template '/etc/treslek/config.js' do
+template node['treslek']['config'] do
   owner node['treslek']['uid']
   group node['treslek']['gid']
   mode 00644

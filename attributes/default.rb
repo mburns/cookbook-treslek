@@ -1,16 +1,16 @@
-default.treslek.cookbook = "treslek"
+default['treslek']['cookbook'] = 'treslek'
 
 # unix user
 default['treslek']['uid'] = '805'
 default['treslek']['gid'] = '805'
 
 # install path
-default['treslek']['path'] = "/usr/local/treslek"
-default['treslek']['bin'] = "#{node[:treslek][:path]}/bin/treslek.js"
-default['treslek']['config'] = '/etc/treslek/conf.json'
+default['treslek']['path'] = '/usr/local/treslek'
+default['treslek']['bin'] = "#{node['treslek']['path']}/bin/treslek.js"
+default['treslek']['config'] = '/etc/treslek/config.json'
 
 # git code repository
-default['treslek']['repo'] = "https://github.com/jirwin/treslek"
+default['treslek']['repo'] = 'https://github.com/jirwin/treslek'
 
 default['treslek']['version'] = 'v0.10.1'
 default['treslek']['nick'] = 'roarbot'

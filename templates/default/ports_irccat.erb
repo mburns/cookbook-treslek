@@ -1,4 +1,4 @@
 # nagios access to port
-<% node[:ele][:all_nagios].sort.each do |n| -%>
+<% node['ele']['all_nagios'].sort.each do |n| -%>
 -i eth0 -s <%= n %> -A FWR -p tcp -m tcp --dport 12345 -j ACCEPT
 <% end -%>
