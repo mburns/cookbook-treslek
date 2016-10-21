@@ -8,6 +8,7 @@ version          '0.2.0'
 
 recipe           'treslek::default', 'Installs and configures Treslek'
 
+depends          'nodejs'
 depends          'redis'
 depends          'runit'
 
