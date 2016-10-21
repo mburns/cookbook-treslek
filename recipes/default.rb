@@ -56,9 +56,9 @@ end
 
 ## Plugins
 
-remote_directory "${node[:treslek][:path]}/comics" do
-  uid node[:treslek][:uid]
-  gid node[:treslek][:gid]
+remote_directory "${node['treslek']['path']}/comics" do
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
   overwrite false #merge with git repo's comics dir contents
 end
 
@@ -70,7 +70,7 @@ cookbook_file 'nagios.js' do
 end
 
 remote_directory 'treslek-gh-issue-search' do
-  path "#{node[:treslek][:path]}/plugins/treslek-gh-issue-search"
+  path "#{node['treslek']['path']}/plugins/treslek-gh-issue-search"
   owner node['treslek']['uid']
   group node['treslek']['gid']
   action :create
@@ -78,7 +78,7 @@ end
 
 creds = Chef::EncryptedDataBagItem.load('passwords', 'github')
 
-template "#{node[:treslek][:path]}/plugins/treslek-gh-issue-search/config.json" do
+template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json" do
   source 'treslek-gh-issue-search.json.erb'
   owner node['treslek']['uid']
   group node['treslek']['gid']
@@ -90,8 +90,8 @@ template "#{node[:treslek][:path]}/plugins/treslek-gh-issue-search/config.json" 
 end
 
 template "/etc/treslek/config.js" do
-  uid node['treslek']['uid']
-  gid node['treslek']['gid']
+  owner node['treslek']['uid']
+  group node['treslek']['gid']
   mode 00644
   variables ({
     :redis_port => '6379',
