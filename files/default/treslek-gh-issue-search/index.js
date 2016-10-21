@@ -22,6 +22,7 @@ Object.keys(config.commands).forEach(function(repo) {
   IssueSearch.prototype[repo] = function(bot, to, from, msg, callback) {
     var settings = config.commands[repo],
         creds ='',
+        label = settings.label ? 'label:'+ settings.label : '',
         intervalId, options;
 
     if (settings.username && settings.password) {
@@ -29,7 +30,7 @@ Object.keys(config.commands).forEach(function(repo) {
     }
 
     options = {
-      url: sprintf('https://%sapi.github.com/search/issues?q=repo:%s+%s', creds, settings.repo, encodeURIComponent(msg)),
+      url: sprintf('https://%sapi.github.com/search/issues?q=repo:%s+is:open+%s+%s', creds, settings.repo, label, encodeURIComponent(msg)),
       headers: {
         'User-Agent': 'Roarbot'
       }
