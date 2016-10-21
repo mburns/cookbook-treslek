@@ -1,0 +1,2 @@
+# public access to webhooks
+-A FWR -i eth0 -p tcp --dport <%= node['treslek']['webhooks']['port'] %> -j ACCEPT
