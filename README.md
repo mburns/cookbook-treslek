@@ -13,7 +13,6 @@ IRC bot: https://github.com/jirwin/treslek
 Usage
 -----
 #### treslek::default
-TODO: Write usage instructions for each cookbook.
 
 e.g.
 Just include `treslek` in your node's `run_list`:
@@ -29,9 +28,6 @@ Just include `treslek` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
