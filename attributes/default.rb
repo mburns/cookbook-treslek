@@ -1,23 +1,23 @@
 default.treslek.cookbook = "treslek"
 
 # unix user
-default.treslek.uid = 805
-default.treslek.gid = 805
+default['treslek']['uid'] = 805
+default['treslek']['gid'] = 805
 
 # install path
-default.treslek.path     = "/usr/local/treslek"
+default['treslek']['path'] = "/usr/local/treslek"
 default['treslek']['bin'] = "#{node[:treslek][:path]}/bin/treslek.js"
 default['treslek']['config'] = '/etc/treslek/conf.json'
 
 # git code repository
-default.treslek.repo     = "https://github.com/jirwin/treslek"
+default['treslek']['repo'] = "https://github.com/jirwin/treslek"
 
 default['treslek']['version'] = 'v0.10.1'
 default['treslek']['nick'] = 'roarbot'
 default['treslek']['host'] = 'irc.rackspace.com'
 
-default.treslek.ignored  = %w(doslek url standupbot dreadnotbot-prod dreadnotbot-stage)
-default.treslek.admins   = %w(jirwin)
+default['treslek']['ignored'] = %w(doslek url standupbot dreadnotbot-prod dreadnotbot-stage)
+default['treslek']['admins'] = %w(jirwin)
 
 # irc options
 # irc options
@@ -33,8 +33,8 @@ default['treslek']['irc']['secure'] = true
 default['treslek']['irc']['password'] = ''
 
 #topics
-default.treslek.topics.separator = '::'
-default.treslek.topics.prefixes = {
+default['treslek']['topics']['separator'] = '::'
+default['treslek']['topics']['prefixes'] = {
   '#trelsek' => 'Treslek'
 }
 
