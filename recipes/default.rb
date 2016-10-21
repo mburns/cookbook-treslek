@@ -104,7 +104,7 @@ end
 runit_service 'treslek' do
   owner 'treslek'
   group 'treslek'
-  down false
+  start_down node['treslek']['disable']
 end
 
 iptables_rule 'ports_irccat'

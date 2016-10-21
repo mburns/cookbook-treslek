@@ -1,4 +1,5 @@
 default['treslek']['cookbook'] = 'treslek'
+default['treslek']['disable'] = 'false'
 
 # unix user
 default['treslek']['uid'] = '805'

@@ -1,3 +1,6 @@
+# 1.2.4
+* more runit fixes
+
 # 1.2.3
 * General bug fixes
 
