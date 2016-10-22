@@ -22,14 +22,11 @@ include_recipe 'nodejs'
 include_recipe 'runit'
 
 group 'treslek' do
-  gid node['treslek']['gid']
   action :create
 end
 
 user 'treslek' do
   comment 'Treslek IRC Bot'
-  uid node['treslek']['uid']
-  gid node['treslek']['gid']
   home '/usr/sbin'
   shell '/bin/false'
   system true
@@ -37,42 +34,42 @@ user 'treslek' do
 end
 
 directory node['treslek']['path'] do
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   recursive true
 end
 
 directory '/etc/treslek' do
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   recursive true
 end
 
 nodejs_npm 'treslek' do
   version node['treslek']['version']
-  user node['treslek']['uid']
+  user 'treslek'
   notifies :restart, 'service[treslek]', :delayed
 end
 
 ## Plugins
 
 remote_directory "${node['treslek']['path']}/comics" do
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   overwrite false # merge with git repo's comics dir contents
 end
 
 cookbook_file 'nagios.js' do
   path "#{node['treslek']['path']}/plugins/nagios.js"
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   action :create
 end
 
 remote_directory 'treslek-gh-issue-search' do
   path "#{node['treslek']['path']}/plugins/treslek-gh-issue-search"
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   action :create
 end
 
@@ -80,8 +77,8 @@ creds = Chef::EncryptedDataBagItem.load('passwords', 'github')
 
 template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json" do
   source 'treslek-gh-issue-search.json.erb'
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   mode 0o0644
   variables ({
     username: creds['username'],
@@ -90,8 +87,8 @@ template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json
 end
 
 template node['treslek']['config'] do
-  owner node['treslek']['uid']
-  group node['treslek']['gid']
+  owner 'treslek'
+  group 'treslek'
   mode 0o0644
   variables ({
     redis_port: '6379',

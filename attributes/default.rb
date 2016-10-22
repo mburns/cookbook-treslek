@@ -1,10 +1,6 @@
 default['treslek']['cookbook'] = 'treslek'
 default['treslek']['disable'] = 'false'
 
-# unix user
-default['treslek']['uid'] = '805'
-default['treslek']['gid'] = '805'
-
 # install path
 default['treslek']['path'] = '/usr/local/treslek'
 default['treslek']['bin'] = "#{node['treslek']['path']}/bin/treslek.js"
