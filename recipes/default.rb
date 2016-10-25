@@ -53,7 +53,7 @@ end
 
 ## Plugins
 
-remote_directory "${node['treslek']['path']}/comics" do
+remote_directory "#{node['treslek']['path']}/comics" do
   owner 'treslek'
   group 'treslek'
   overwrite false # merge with git repo's comics dir contents
