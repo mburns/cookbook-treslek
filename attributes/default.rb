@@ -1,6 +1,8 @@
 default['treslek']['cookbook'] = 'treslek'
 default['treslek']['disable'] = 'false'
 
+default['treslek']['user'] = 'treslek'
+
 # install path
 default['treslek']['path'] = '/usr/local/treslek'
 default['treslek']['bin'] = "#{node['treslek']['path']}/bin/treslek.js"
