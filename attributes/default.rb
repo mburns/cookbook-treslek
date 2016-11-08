@@ -9,7 +9,7 @@ default['treslek']['config'] = '/etc/treslek/config.json'
 # git code repository
 default['treslek']['repo'] = 'https://github.com/jirwin/treslek'
 
-default['treslek']['version'] = 'v0.10.1'
+default['treslek']['version'] = 'v0.11.0'
 default['treslek']['nick'] = 'roarbot'
 default['treslek']['host'] = 'irc.rackspace.com'
 
