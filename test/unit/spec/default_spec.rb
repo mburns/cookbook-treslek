@@ -9,16 +9,16 @@ describe 'foobar::default' do
   it 'creates group' do
     expect(chef_run).to create_group('treslek')
   end
-  
+
   it 'creates directory' do
     expect(chef_run).to create_directory('/usr/local/treslek')
   end
-  
+
   it 'creates config file' do
     expect(chef_run).to create_template('/etc/treslek/config.json')
   end
 
   it 'creates config file' do
     expect(chef_run).to create_template('/usr/local/treslek//plugins/treslek-gh-issue-search/config.json')
-  end  
+  end
 end
