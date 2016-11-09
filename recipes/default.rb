@@ -47,7 +47,6 @@ end
 
 nodejs_npm 'treslek' do
   version node['treslek']['version']
-  user 'treslek'
   notifies :restart, 'service[treslek]', :delayed
 end
 
