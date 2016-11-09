@@ -21,27 +21,27 @@ include_recipe 'redis'
 include_recipe 'nodejs'
 include_recipe 'runit'
 
-group 'treslek' do
+group node['treslek']['user'] do
   action :create
 end
 
-user 'treslek' do
+user node['treslek']['user'] do
   comment 'Treslek IRC Bot'
-  home '/usr/sbin'
+  gid node['treslek']['user']
   shell '/bin/false'
   system true
   action :create
 end
 
 directory node['treslek']['path'] do
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   recursive true
 end
 
 directory '/etc/treslek' do
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   recursive true
 end
 
@@ -53,22 +53,22 @@ end
 ## Plugins
 
 remote_directory "#{node['treslek']['path']}/comics" do
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   overwrite false # merge with git repo's comics dir contents
 end
 
 cookbook_file 'nagios.js' do
   path "#{node['treslek']['path']}/plugins/nagios.js"
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   action :create
 end
 
 remote_directory 'treslek-gh-issue-search' do
   path "#{node['treslek']['path']}/plugins/treslek-gh-issue-search"
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   action :create
 end
 
@@ -76,8 +76,8 @@ creds = Chef::EncryptedDataBagItem.load('passwords', 'github')
 
 template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json" do
   source 'treslek-gh-issue-search.json.erb'
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   mode 0o0644
   variables ({
     username: creds['username'],
@@ -86,8 +86,8 @@ template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json
 end
 
 template node['treslek']['config'] do
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   mode 0o0644
   variables ({
     redis_port: '6379',
@@ -98,8 +98,8 @@ template node['treslek']['config'] do
 end
 
 runit_service 'treslek' do
-  owner 'treslek'
-  group 'treslek'
+  owner node['treslek']['user']
+  group node['treslek']['user']
   # start_down node['treslek']['disable']
 end
 
