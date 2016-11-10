@@ -19,7 +19,6 @@ default['treslek']['ignored'] = %w(doslek url standupbot dreadnotbot-prod dreadn
 default['treslek']['admins'] = %w(jirwin)
 
 # irc options
-# irc options
 default['treslek']['irc']['port'] = 6697
 default['treslek']['irc']['channels'] = %w(#treslek)
 default['treslek']['irc']['username'] = 'treslekbot'
