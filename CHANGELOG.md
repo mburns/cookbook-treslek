@@ -1,3 +1,8 @@
+# 1.3.5
+* Fix config path
+
+# 1.3.0
+
 # 1.2.4
 * more runit fixes
 
