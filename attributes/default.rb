@@ -6,7 +6,7 @@ default['treslek']['user'] = 'treslek'
 # install path
 default['treslek']['path'] = '/usr/local/treslek'
 default['treslek']['bin'] = "#{node['treslek']['path']}/bin/treslek.js"
-default['treslek']['config'] = '/etc/treslek/config.json'
+default['treslek']['config'] = '/etc/treslek/conf.json'
 
 # git code repository
 default['treslek']['repo'] = 'https://github.com/jirwin/treslek'
