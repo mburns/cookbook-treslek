@@ -15,8 +15,8 @@ default['treslek']['version'] = 'v0.11.0'
 default['treslek']['nick'] = 'roarbot'
 default['treslek']['host'] = 'irc.rackspace.com'
 
-default['treslek']['ignored'] = %w(doslek url standupbot dreadnotbot-prod dreadnotbot-stage)
-default['treslek']['admins'] = %w(jirwin)
+default['treslek']['ignored'] = %w(doslek url standupbot)
+default['treslek']['admins'] = %w(mburns)
 
 # irc options
 default['treslek']['irc']['port'] = 6697
