@@ -49,3 +49,4 @@ default['treslek']['commandPrefix'] = '!'
 # runit config
 default['treslek']['keep_logs'] = 20
 default['treslek']['syslog_sink'] = '127.0.0.1:8001'
+default['treslek']['runit']['user'] = 'daemon'
