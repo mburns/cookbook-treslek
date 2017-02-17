@@ -1,3 +1,6 @@
+# 1.4.0
+* allow for configurable runit user
+
 # 1.3.5
 * Fix config path
 
@@ -15,7 +18,7 @@
 # 1.2.1
 * CI tooling and lint cleanup
 
-# 1.2.0 
+# 1.2.0
 * Merge of mburns/cookbook-treslek and mmi-cookbooks/treslek-chef
 
 # 0.2.1
