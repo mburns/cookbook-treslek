@@ -98,8 +98,8 @@ template node['treslek']['config'] do
 end
 
 runit_service 'treslek' do
-  owner node['treslek']['user']
-  group node['treslek']['user']
+  owner node['treslek']['runit']['user']
+  group node['treslek']['runit']['user']
   # start_down node['treslek']['disable']
 end
 
