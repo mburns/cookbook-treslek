@@ -1,3 +1,6 @@
+# 1.4.1
+* change data_bag searched for github creds
+
 # 1.4.0
 * allow for configurable runit user
 
