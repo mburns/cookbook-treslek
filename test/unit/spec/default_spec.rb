@@ -19,6 +19,6 @@ describe 'treslek::default' do
   end
 
   it 'creates config file' do
-    expect(chef_run).to create_template('/usr/local/treslek//plugins/treslek-gh-issue-search/config.json')
+    expect(chef_run).to create_template('/usr/local/treslek/plugins/treslek-gh-issue-search/config.json')
   end
 end
