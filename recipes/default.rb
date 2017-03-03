@@ -72,7 +72,7 @@ remote_directory 'treslek-gh-issue-search' do
   action :create
 end
 
-creds = Chef::EncryptedDataBagItem.load('credentials', 'treslek-gh-issue-search')
+creds = Chef::EncryptedDataBagItem.load('passwords', 'github')
 
 template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json" do
   source 'treslek-gh-issue-search.json.erb'
@@ -81,7 +81,7 @@ template "#{node['treslek']['path']}/plugins/treslek-gh-issue-search/config.json
   mode 0o0644
   variables ({
     username: creds['username'],
-    password: creds['personal_access_token']
+    password: creds['password']
   })
 end
 
