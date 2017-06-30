@@ -1,3 +1,13 @@
+# 1.4.4
+* fix `iptables` depepdency
+* remove `.DS_Store` metadata files
+
+# 1.4.3
+* Fix template syntax for possibly-empty lists
+
+# 1.4.2
+* Allow for empty lists
+
 # 1.4.1
 * change data_bag searched for github creds
 
