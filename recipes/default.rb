@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+include_recipe 'iptables'
 include_recipe 'redis'
 include_recipe 'nodejs'
 include_recipe 'runit'
