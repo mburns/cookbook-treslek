@@ -8,6 +8,7 @@ version          '1.4.3'
 
 recipe           'treslek::default', 'Installs and configures Treslek'
 
+depends          'iptables'
 depends          'nodejs'
 depends          'redis'
 depends          'runit'
