@@ -30,7 +30,7 @@ end
 group :development do
   gem 'rake'
   gem 'thor-scmversion'
-  gem 'guard', '= 2.8.2'
+  gem 'guard'
   gem 'guard-kitchen'
   gem 'guard-foodcritic'
   gem 'guard-rubocop'
